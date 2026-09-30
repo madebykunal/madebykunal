@@ -5,7 +5,7 @@ import { securityHeaders } from './src/lib/security-headers';
 const nextConfig: NextConfig = {
   poweredByHeader: false,
   experimental: {
-    optimizePackageImports: ['@phosphor-icons/react'],
+    inlineCss: true,
   },
   headers: async () => [
     {

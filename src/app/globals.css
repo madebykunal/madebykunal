@@ -1,13 +1,15 @@
 @import "tailwindcss";
 
 @theme {
-  --color-page: #fafaf9;
-  --color-card: #ffffff;
-  --color-ink: #17181b;
-  --color-muted: #6a6d73;
-  --color-faint: #94969c;
-  --color-accent: #33507a;
-  --color-accent-strong: #263c5c;
+  --color-page: #000000;
+  --color-band: #111112;
+  --color-ink: #e8e8e6;
+  --color-muted: #9a9ba0;
+  --color-faint: #6b6c71;
+  --color-line: rgb(255 255 255 / 0.12);
+  --color-edge: rgb(255 255 255 / 0.22);
+  --color-accent: #8fa8d6;
+  --color-accent-strong: #a9bee4;
 
   --font-sans:
     var(--font-figtree), -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
@@ -15,43 +17,87 @@
 
   --font-weight-title: 500;
 
-  --text-display: 1.875rem;
-  --text-display--line-height: 1.15;
-  --text-display--letter-spacing: -0.028em;
+  --text-hero: clamp(2.75rem, 1.9rem + 3.6vw, 3.75rem);
+  --text-hero--line-height: 1.08;
+  --text-hero--letter-spacing: -0.025em;
+
+  --text-heading: 1.625rem;
+  --text-heading--line-height: 1.3;
+  --text-heading--letter-spacing: -0.01em;
+
+  --text-lead: 19px;
+  --text-lead--line-height: 1.75;
+
+  --text-title: 18px;
+  --text-title--line-height: 1.45;
 
   --text-body: 16px;
-  --text-body--line-height: 1.6;
-  --text-meta: 14px;
-  --text-meta--line-height: 1.55;
+  --text-body--line-height: 1.7;
+
+  --text-button: 14px;
+  --text-button--line-height: 1;
+
+  --text-label: 13px;
+  --text-label--line-height: 1.5;
+
+  --text-meta: 15px;
+  --text-meta--line-height: 1.6;
   --text-foot: 13px;
-  --text-foot--line-height: 1.5;
+  --text-foot--line-height: 1.6;
 
   --tracking-site: 0.01em;
 
-  --container-column: 584px;
-
-  --shadow-card:
-    0 1px 2px --alpha(var(--color-ink) / 5%), 0 5px 12px -4px --alpha(var(--color-ink) / 8%);
-  --shadow-lift:
-    0 2px 4px --alpha(var(--color-ink) / 6%), 0 14px 30px -10px --alpha(var(--color-ink) / 16%);
-  --shadow-shot:
-    0 1px 2px --alpha(var(--color-ink) / 6%), 0 6px 14px -6px --alpha(var(--color-ink) / 14%);
+  --container-column: 53rem;
 
   --breakpoint-wide: 640px;
 }
 
 @layer base {
   :root {
-    --cursor-crosshair: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='%2333507a' stroke='%23fafaf9' stroke-width='2' paint-order='stroke'><rect x='11' y='3' width='2' height='5'/><rect x='11' y='16' width='2' height='5'/><rect x='3' y='11' width='5' height='2'/><rect x='16' y='11' width='5' height='2'/></svg>");
-    --cursor-target: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='%2333507a' stroke='%23fafaf9' stroke-width='2' paint-order='stroke'><rect x='11' y='3' width='2' height='5'/><rect x='11' y='16' width='2' height='5'/><rect x='3' y='11' width='5' height='2'/><rect x='16' y='11' width='5' height='2'/><rect x='11' y='11' width='2' height='2'/></svg>");
+    --cursor-crosshair: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='%238fa8d6' stroke='%23000000' stroke-width='2' paint-order='stroke'><rect x='11' y='3' width='2' height='5'/><rect x='11' y='16' width='2' height='5'/><rect x='3' y='11' width='5' height='2'/><rect x='16' y='11' width='5' height='2'/></svg>");
+    --cursor-target: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='%238fa8d6' stroke='%23000000' stroke-width='2' paint-order='stroke'><rect x='11' y='3' width='2' height='5'/><rect x='11' y='16' width='2' height='5'/><rect x='3' y='11' width='5' height='2'/><rect x='16' y='11' width='5' height='2'/><rect x='11' y='11' width='2' height='2'/></svg>");
   }
 
   html {
     -webkit-text-size-adjust: 100%;
   }
 
+  ::-webkit-scrollbar {
+    width: 1px;
+    height: 1px;
+  }
+
+  ::-webkit-scrollbar-track,
+  ::-webkit-scrollbar-corner {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-ink);
+    border-radius: 9999px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #ffffff;
+  }
+
+  html[data-scrollbar="idle"] ::-webkit-scrollbar-thumb {
+    background: transparent;
+  }
+
+  @supports not selector(::-webkit-scrollbar) {
+    html {
+      scrollbar-width: thin;
+      scrollbar-color: var(--color-ink) transparent;
+    }
+
+    html[data-scrollbar="idle"] {
+      scrollbar-color: transparent transparent;
+    }
+  }
+
   ::selection {
-    @apply bg-accent/20 text-ink;
+    @apply bg-accent/30 text-ink;
   }
 
   body {
@@ -85,5 +131,15 @@
   a:focus-visible,
   button:focus-visible {
     @apply rounded-[3px] outline-2 outline-offset-[3px] outline-accent;
+  }
+}
+
+@layer components {
+  .prose-links a {
+    @apply underline decoration-accent/45 decoration-1 underline-offset-[0.25em];
+  }
+
+  .prose-links a:hover {
+    @apply decoration-accent-strong;
   }
 }

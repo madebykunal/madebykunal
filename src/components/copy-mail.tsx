@@ -1,6 +1,5 @@
 'use client';
 
-import { CheckIcon, CopyIcon } from '@phosphor-icons/react/ssr';
 import { useEffect, useRef, useState } from 'react';
 
 import { MAIL } from '@/content/profile';
@@ -9,7 +8,7 @@ const RESET_AFTER = 2400;
 
 type CopyState = 'idle' | 'copied' | 'failed';
 
-export function CopyMail() {
+export function CopyMail({ className }: { className?: string }) {
   const [state, setState] = useState<CopyState>('idle');
   const timer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
 
@@ -30,19 +29,21 @@ export function CopyMail() {
 
   return (
     <>
-      <a href={`mailto:${MAIL}`}>mail</a>
-      <button
-        type="button"
-        onClick={copy}
-        title={`Copy ${MAIL}`}
-        aria-label={`Copy email address, ${MAIL}`}
-        className="ml-0.5 align-[-0.15em] text-faint transition-colors duration-200 ease-out hover:text-accent motion-reduce:transition-none"
-      >
-        {state === 'copied' ? (
-          <CheckIcon size={14} aria-hidden="true" className="text-accent" />
-        ) : (
-          <CopyIcon size={14} aria-hidden="true" />
-        )}
+      <button type="button" onClick={copy} title={MAIL} className={className}>
+        <span className="grid">
+          <span
+            className={`col-start-1 row-start-1 ${state === 'copied' ? 'invisible' : ''}`}
+            aria-hidden={state === 'copied' ? true : undefined}
+          >
+            Copy email
+          </span>
+          <span
+            className={`col-start-1 row-start-1 ${state === 'copied' ? '' : 'invisible'}`}
+            aria-hidden={state === 'copied' ? undefined : true}
+          >
+            Copied
+          </span>
+        </span>
       </button>
       <span role="status" className="sr-only">
         {state === 'copied'

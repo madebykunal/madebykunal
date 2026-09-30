@@ -21,6 +21,7 @@ export function securityHeaders(isDev: boolean) {
     { key: 'Content-Security-Policy', value: contentSecurityPolicy(isDev) },
     { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
     { key: 'X-Content-Type-Options', value: 'nosniff' },
+    { key: 'Cross-Origin-Opener-Policy', value: 'same-origin' },
     {
       key: 'Permissions-Policy',
       value: 'camera=(), microphone=(), geolocation=(), browsing-topics=()',

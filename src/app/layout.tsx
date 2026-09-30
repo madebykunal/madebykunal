@@ -3,6 +3,8 @@ import type { Metadata, Viewport } from 'next';
 import { Figtree, JetBrains_Mono } from 'next/font/google';
 import type { ReactNode } from 'react';
 
+import { ScrollActivity } from '@/components/scroll-activity';
+
 import './globals.css';
 
 const sans = Figtree({
@@ -20,18 +22,20 @@ const mono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: 'Kunal Singh',
   description:
-    'Kunal Singh is a product designer and engineer at Calxmap, where he leads design and supports the engineering team with frontend work.',
+    'Kunal Singh is a product designer and engineer at Calxmap who builds for the web and is learning Rust.',
 };
 
 export const viewport: Viewport = {
-  colorScheme: 'light',
+  colorScheme: 'dark',
+  themeColor: '#000000',
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className={`${sans.variable} ${mono.variable}`}>
       <body>
-        <main className="mx-auto max-w-column px-6 py-10 wide:py-28">{children}</main>
+        {children}
+        <ScrollActivity />
         <Analytics />
       </body>
     </html>

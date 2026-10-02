@@ -1,6 +1,6 @@
 import { Analytics } from '@vercel/analytics/next';
 import type { Metadata, Viewport } from 'next';
-import { Figtree, JetBrains_Mono } from 'next/font/google';
+import { Figtree, JetBrains_Mono, Newsreader } from 'next/font/google';
 import type { ReactNode } from 'react';
 
 import { ScrollActivity } from '@/components/scroll-activity';
@@ -11,6 +11,13 @@ const sans = Figtree({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-figtree',
+});
+
+const display = Newsreader({
+  subsets: ['latin'],
+  axes: ['opsz'],
+  display: 'swap',
+  variable: '--font-newsreader',
 });
 
 const mono = JetBrains_Mono({
@@ -27,12 +34,12 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   colorScheme: 'dark',
-  themeColor: '#000000',
+  themeColor: '#0e0e10',
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" className={`${sans.variable} ${mono.variable}`}>
+    <html lang="en" className={`${sans.variable} ${display.variable} ${mono.variable}`}>
       <body>
         {children}
         <ScrollActivity />

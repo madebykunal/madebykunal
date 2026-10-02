@@ -6,7 +6,7 @@ const TIME_ZONE = 'Asia/Kolkata';
 
 const timeFormat = new Intl.DateTimeFormat('en-US', {
   timeZone: TIME_ZONE,
-  hour: '2-digit',
+  hour: 'numeric',
   minute: '2-digit',
   hour12: true,
 });

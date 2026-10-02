@@ -5,7 +5,7 @@ import { LINKS } from '@/content/profile';
 export const SITE_NAME = 'Kunal Singh';
 
 export const TAGLINE =
-  'Designer at heart and curious by habit. Happiest with a good book, a good album, and a problem worth untangling.';
+  'Designer at heart. I build the frontend in React, and I’m learning Rust for the rest.';
 
 export const BASED_IN = 'India';
 
@@ -25,14 +25,13 @@ export const ABOUT: ReactNode = (
       <a href={LINKS.calxmap} {...EXTERNAL}>
         Calxmap
       </a>{' '}
-      as a design intern and learned the job the slow way, through documentation, research and
-      relentless iteration, until I was leading design for the company.
+      as a design intern and learned the job the slow way, through research and relentless
+      iteration, until I was leading its design.
     </p>
     <p>
-      These days I split my time between design and the frontend, working with the engineering team
-      to turn designs into production code in React and Next.js. Next is Rust: I&rsquo;m learning it
-      to build fast, reliable backends, so a product can go from a design file to a server without
-      being handed off in between.
+      Today I split my time between design and the frontend, turning designs into production code in
+      React and Next.js. Next is Rust, so a product can go from a design file to a server without a
+      handoff in between.
     </p>
     <p>
       Offline, I keep myself grounded with books and music. You can also find me on{' '}
@@ -54,22 +53,20 @@ export const ABOUT: ReactNode = (
 
 export const PROJECTS: Entry[] = [
   {
-    title: 'PlayZ',
-    description:
-      'A browser arcade of a dozen quick games, from Snake and Tetris to Sudoku and a retro chess board, in plain HTML, CSS and JavaScript.',
-    href: 'https://playz.pages.dev',
-  },
-  {
     title: 'Plus Compiler',
     description:
-      'A minimal code playground for HTML, CSS, JS, C and Rust. Next.js and Monaco in front, Rust and Axum behind.',
+      'A code playground for HTML, CSS, JS, C and Rust. Next.js in front, Rust and Axum behind.',
     href: 'https://github.com/madebykunal/Plus-Compiler',
   },
   {
     title: 'Noteiler',
-    description:
-      'A calm, distraction-free writing editor for getting words down without the noise.',
+    description: 'A calm, distraction-free editor for getting words down without the noise.',
     href: 'https://github.com/madebykunal/Noteiler',
+  },
+  {
+    title: 'PlayZ',
+    description: 'A dozen quick browser games, from Snake to chess, in plain HTML, CSS and JS.',
+    href: 'https://playz.pages.dev',
   },
 ];
 
@@ -77,15 +74,13 @@ export const WORK: Entry[] = [
   {
     label: 'calxmap.com',
     title: 'Calxmap — the expert marketplace platform',
-    description:
-      'Book any expert, anytime and anywhere. I started here as a design intern and now lead design, while working with the engineering team on the frontend.',
+    description: 'Book any expert, anytime and anywhere. I lead design and work on the frontend.',
     href: LINKS.calxmap,
   },
   {
     label: 'calxbook.com',
     title: 'Calxbook — learn live from verified experts',
-    description:
-      'Master any skill with the expert of your choice, in live sessions. Designed and built alongside the same team.',
+    description: 'Designed by me, built alongside the same team.',
     href: 'https://calxbook.com',
   },
 ];

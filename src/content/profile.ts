@@ -1,3 +1,7 @@
+export const SITE_URL = 'https://madebykunal.com';
+
+export const HANDLE = 'madebykunal';
+
 export const MAIL = 'madebykunal@gmail.com';
 
 export const LINKS = {

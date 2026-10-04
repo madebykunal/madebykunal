@@ -5,6 +5,7 @@ import { CopyMail } from '@/components/copy-mail';
 import { Clock, Today } from '@/components/ist-time';
 import { ABOUT, BASED_IN, FOOTER_LINE, PROJECTS, SITE_NAME, TAGLINE, WORK } from '@/content/home';
 import { LINKS, MAIL } from '@/content/profile';
+import { STRUCTURED_DATA } from '@/lib/structured-data';
 
 const EXTERNAL = { target: '_blank', rel: 'noopener noreferrer' } as const;
 
@@ -146,6 +147,11 @@ function Footer() {
 export default function Home() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        // biome-ignore lint/security/noDangerouslySetInnerHtml: static JSON-LD, `<` escaped at the source.
+        dangerouslySetInnerHTML={{ __html: STRUCTURED_DATA }}
+      />
       <Hero />
       <main>
         <Section id="about" title="About">

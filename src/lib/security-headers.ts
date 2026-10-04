@@ -21,6 +21,8 @@ export function securityHeaders(isDev: boolean) {
     { key: 'Content-Security-Policy', value: contentSecurityPolicy(isDev) },
     { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
     { key: 'X-Content-Type-Options', value: 'nosniff' },
+    // frame-ancestors covers modern browsers; this covers the ones that predate it.
+    { key: 'X-Frame-Options', value: 'DENY' },
     { key: 'Cross-Origin-Opener-Policy', value: 'same-origin' },
     {
       key: 'Permissions-Policy',

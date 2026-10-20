@@ -1,31 +1,32 @@
 import { Analytics } from '@vercel/analytics/next';
 import type { Metadata, Viewport } from 'next';
-import { Figtree, JetBrains_Mono, Newsreader } from 'next/font/google';
+import { Hanken_Grotesk, Inter } from 'next/font/google';
+import localFont from 'next/font/local';
 import type { ReactNode } from 'react';
 
 import { ScrollActivity } from '@/components/scroll-activity';
-import { SITE_NAME, TAGLINE } from '@/content/home';
-import { HANDLE, SITE_URL } from '@/content/profile';
+import { ROLE, SITE_NAME, TAGLINE } from '@/content/home';
+import { DOMAIN, HANDLE, SITE_URL } from '@/content/profile';
 
 import './globals.css';
 
-const sans = Figtree({
+const sans = Hanken_Grotesk({
   subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-figtree',
+  variable: '--font-hanken',
 });
 
-const display = Newsreader({
+const display = Inter({
   subsets: ['latin'],
-  axes: ['opsz'],
-  display: 'swap',
+  weight: '500',
+  variable: '--font-inter',
+});
+
+const serif = localFont({
+  src: './fonts/newsreader-italic.woff2',
+  style: 'italic',
+  weight: '400',
   variable: '--font-newsreader',
-});
-
-const mono = JetBrains_Mono({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-jetbrains',
+  adjustFontFallback: 'Times New Roman',
 });
 
 export const metadata: Metadata = {
@@ -39,13 +40,16 @@ export const metadata: Metadata = {
   keywords: [
     HANDLE,
     'made by kunal',
+    DOMAIN,
     SITE_NAME,
-    'product designer',
-    'frontend engineer',
+    `${SITE_NAME} ${ROLE}`,
+    ROLE,
+    'Product Designer',
+    'Calxmap',
+    'Calxbook',
+    'Rust',
     'React',
     'Next.js',
-    'Rust',
-    'Calxmap',
   ],
   alternates: { canonical: '/' },
   openGraph: {
@@ -80,12 +84,12 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   colorScheme: 'dark',
-  themeColor: '#0e0e10',
+  themeColor: '#1a1a1a',
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" className={`${sans.variable} ${display.variable} ${mono.variable}`}>
+    <html lang="en" className={`${sans.variable} ${display.variable} ${serif.variable}`}>
       <body>
         {children}
         <ScrollActivity />

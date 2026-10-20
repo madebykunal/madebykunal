@@ -8,6 +8,7 @@ function contentSecurityPolicy(isDev: boolean) {
     "img-src 'self' data: blob:",
     "font-src 'self'",
     `connect-src 'self' ${VERCEL_ANALYTICS}${isDev ? ' ws:' : ''}`,
+    "manifest-src 'self'",
     "object-src 'none'",
     "base-uri 'self'",
     "form-action 'self'",
@@ -21,7 +22,6 @@ export function securityHeaders(isDev: boolean) {
     { key: 'Content-Security-Policy', value: contentSecurityPolicy(isDev) },
     { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
     { key: 'X-Content-Type-Options', value: 'nosniff' },
-    // frame-ancestors covers modern browsers; this covers the ones that predate it.
     { key: 'X-Frame-Options', value: 'DENY' },
     { key: 'Cross-Origin-Opener-Policy', value: 'same-origin' },
     {

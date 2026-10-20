@@ -1,15 +1,13 @@
 import { ImageResponse } from 'next/og';
 
+import { Mark } from '@/components/mark';
 import { SITE_NAME, TAGLINE } from '@/content/home';
+import { DOMAIN } from '@/content/profile';
 
 export const alt = `${SITE_NAME}: ${TAGLINE}`;
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
-const DOMAIN = 'madebykunal.com';
-
-// Subset each face to the glyphs drawn below. Without a user agent, Google Fonts serves TTF,
-// which is what the image renderer reads.
 async function googleFont(family: string, text: string) {
   try {
     const css = await fetch(
@@ -24,13 +22,13 @@ async function googleFont(family: string, text: string) {
 
 export default async function Image() {
   const [display, sans] = await Promise.all([
-    googleFont('Newsreader:opsz@72', SITE_NAME),
-    googleFont('Figtree', `${TAGLINE}${DOMAIN}`),
+    googleFont('Inter:wght@500', SITE_NAME),
+    googleFont('Hanken+Grotesk:wght@470', `${TAGLINE}${DOMAIN}`),
   ]);
 
   const fonts = [
-    ...(display ? [{ name: 'Newsreader', data: display, weight: 400 as const }] : []),
-    ...(sans ? [{ name: 'Figtree', data: sans, weight: 400 as const }] : []),
+    ...(display ? [{ name: 'Inter', data: display, weight: 500 as const }] : []),
+    ...(sans ? [{ name: 'Hanken Grotesk', data: sans, weight: 400 as const }] : []),
   ];
 
   return new ImageResponse(
@@ -42,27 +40,28 @@ export default async function Image() {
         flexDirection: 'column',
         justifyContent: 'space-between',
         padding: '84px 96px',
-        background: '#0e0e10',
-        fontFamily: 'Figtree',
+        background: '#1a1a1a',
+        fontFamily: 'Hanken Grotesk',
       }}
     >
       <div style={{ display: 'flex', alignItems: 'center', gap: 18 }}>
-        <div style={{ width: 22, height: 22, borderRadius: 11, background: '#8fa8d6' }} />
-        <div style={{ fontSize: 28, color: '#929398' }}>{DOMAIN}</div>
+        <Mark size={40} color="#f2f2f2" />
+        <div style={{ fontSize: 28, color: '#707070' }}>{DOMAIN}</div>
       </div>
       <div style={{ display: 'flex', flexDirection: 'column', gap: 28 }}>
         <div
           style={{
-            fontFamily: 'Newsreader',
-            fontSize: 132,
+            fontFamily: 'Inter',
+            fontSize: 112,
+            fontWeight: 500,
             lineHeight: 1.04,
-            letterSpacing: '-0.02em',
-            color: '#ecece8',
+            letterSpacing: '-0.03em',
+            color: '#f2f2f2',
           }}
         >
           {SITE_NAME}
         </div>
-        <div style={{ maxWidth: 900, fontSize: 38, lineHeight: 1.45, color: '#bdbdb8' }}>
+        <div style={{ maxWidth: 900, fontSize: 38, lineHeight: 1.45, color: '#a0a0a0' }}>
           {TAGLINE}
         </div>
       </div>

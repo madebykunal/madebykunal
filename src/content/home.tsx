@@ -1,11 +1,13 @@
 import type { ReactNode } from 'react';
 
-import { LINKS } from '@/content/profile';
+import { EXTERNAL, LINKS, MAIL } from '@/content/profile';
 
 export const SITE_NAME = 'Kunal Singh';
 
+export const ROLE = 'Product Engineer';
+
 export const TAGLINE =
-  'Designer at heart. I build the frontend in React, and I’m learning Rust for the rest.';
+  'Shaping ideas into products. Designing and building them from the first sketch to the last commit.';
 
 export const BASED_IN = 'India';
 
@@ -13,76 +15,82 @@ export type Entry = {
   title: string;
   description: string;
   href: string;
-  label?: string;
 };
 
-const EXTERNAL = { target: '_blank', rel: 'noopener noreferrer' } as const;
-
-export const ABOUT: ReactNode = (
+export const INTRO: ReactNode = (
   <>
     <p>
-      I was a designer before I wrote much code. I joined{' '}
+      <em>Shaping ideas into products</em>. Designing and building them from the first sketch to the
+      last commit. Currently buried in Rust’s lifetimes. {ROLE} at{' '}
       <a href={LINKS.calxmap} {...EXTERNAL}>
         Calxmap
-      </a>{' '}
-      as a design intern and learned the job the slow way, through research and relentless
-      iteration, until I was leading its design.
-    </p>
-    <p>
-      Today I split my time between design and the frontend, turning designs into production code in
-      React and Next.js. Next is Rust, so a product can go from a design file to a server without a
-      handoff in between.
-    </p>
-    <p>
-      Offline, I keep myself grounded with books and music. You can also find me on{' '}
-      <a href={LINKS.linkedin} {...EXTERNAL}>
-        LinkedIn
-      </a>{' '}
-      and{' '}
-      <a href={LINKS.github} {...EXTERNAL}>
-        GitHub
       </a>
-      , or read my{' '}
-      <a href={LINKS.resume} {...EXTERNAL}>
-        résumé
+      .
+    </p>
+    <p>
+      Self taught, mostly. Learned by doing the work and then doing it better. Started at Calxmap as
+      a design intern and ended up leading design for Calxmap and{' '}
+      <a href={LINKS.calxbook} {...EXTERNAL}>
+        Calxbook
       </a>
       .
     </p>
   </>
 );
 
+export const WORK: Entry[] = [
+  {
+    title: 'Calxmap',
+    description: 'Book any expert, anytime.',
+    href: LINKS.calxmap,
+  },
+  {
+    title: 'Calxbook',
+    description: 'Learn live from verified experts.',
+    href: LINKS.calxbook,
+  },
+];
+
 export const PROJECTS: Entry[] = [
   {
     title: 'Plus Compiler',
-    description:
-      'A code playground for HTML, CSS, JS, C and Rust. Next.js in front, Rust and Axum behind.',
+    description: 'Code playground backed by Rust.',
     href: 'https://github.com/madebykunal/Plus-Compiler',
   },
   {
     title: 'Noteiler',
-    description: 'A calm, distraction-free editor for getting words down without the noise.',
+    description: 'A calm, distraction-free editor.',
     href: 'https://github.com/madebykunal/Noteiler',
   },
   {
     title: 'PlayZ',
-    description: 'A dozen quick browser games, from Snake to chess, in plain HTML, CSS and JS.',
+    description: 'A dozen quick browser games.',
     href: 'https://playz.pages.dev',
   },
 ];
 
-export const WORK: Entry[] = [
-  {
-    label: 'calxmap.com',
-    title: 'Calxmap — the expert marketplace platform',
-    description: 'Book any expert, anytime and anywhere. I lead design and work on the frontend.',
-    href: LINKS.calxmap,
-  },
-  {
-    label: 'calxbook.com',
-    title: 'Calxbook — learn live from verified experts',
-    description: 'Designed by me, built alongside the same team.',
-    href: 'https://calxbook.com',
-  },
-];
+export const NOW: ReactNode = (
+  <>
+    <p>
+      Going deeper into the web, and getting better at Rust. The goal is one person taking a product
+      from a design file to a server, <em>with no handoff in between.</em>
+    </p>
+    <p>Usually reading something, sometimes writing. And there’s almost always music on.</p>
+  </>
+);
+
+export const CONNECT: ReactNode = (
+  <p>
+    Reach me at <a href={`mailto:${MAIL}`}>{MAIL}</a>, or find me on{' '}
+    <a href={LINKS.linkedin} {...EXTERNAL}>
+      LinkedIn
+    </a>{' '}
+    and{' '}
+    <a href={LINKS.github} {...EXTERNAL}>
+      GitHub
+    </a>
+    .
+  </p>
+);
 
 export const FOOTER_LINE = 'Good things happen once, others are created.';

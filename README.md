@@ -1,11 +1,7 @@
 # Kunal Singh
 
-**Product designer and engineer.** Designer at heart and curious by habit. Happiest with a good book, a good album, and a problem worth untangling.
+**Product Engineer at [Calxmap](https://calxmap.com).** Shaping ideas into products. Designing and building them from the first sketch to the last commit.
 
-📍 India (IST, UTC+5:30)
-
----
-
----
+Live at [madebykunal.com](https://madebykunal.com).
 
 <sub>Good things happen once, others are created.</sub>

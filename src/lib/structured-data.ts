@@ -1,12 +1,10 @@
-import { BASED_IN, SITE_NAME, TAGLINE } from '@/content/home';
-import { HANDLE, LINKS, SITE_URL } from '@/content/profile';
+import { BASED_IN, ROLE, SITE_NAME, TAGLINE } from '@/content/home';
+import { DOMAIN, HANDLE, LINKS, MAIL, SITE_URL } from '@/content/profile';
 
 const HOME = `${SITE_URL}/`;
 const PERSON = { '@id': `${SITE_URL}/#person` };
 const WEBSITE = { '@id': `${SITE_URL}/#website` };
 
-// WebSite.name is what Google shows as the site name above the result, so the handle goes there;
-// alternateName covers the other ways people type it.
 const graph = {
   '@context': 'https://schema.org',
   '@graph': [
@@ -15,7 +13,7 @@ const graph = {
       ...WEBSITE,
       url: HOME,
       name: HANDLE,
-      alternateName: [SITE_NAME, 'made by kunal', 'madebykunal.com'],
+      alternateName: [SITE_NAME, 'made by kunal', DOMAIN],
       description: TAGLINE,
       inLanguage: 'en',
       publisher: PERSON,
@@ -27,6 +25,7 @@ const graph = {
       name: SITE_NAME,
       description: TAGLINE,
       inLanguage: 'en',
+      dateModified: new Date().toISOString(),
       isPartOf: WEBSITE,
       mainEntity: PERSON,
     },
@@ -36,24 +35,24 @@ const graph = {
       name: SITE_NAME,
       givenName: 'Kunal',
       familyName: 'Singh',
-      alternateName: HANDLE,
+      alternateName: [HANDLE, 'made by kunal'],
       url: HOME,
+      email: `mailto:${MAIL}`,
       description: TAGLINE,
-      jobTitle: 'Product Designer and Frontend Engineer',
+      jobTitle: ROLE,
       worksFor: { '@type': 'Organization', name: 'Calxmap', url: LINKS.calxmap },
       homeLocation: { '@type': 'Country', name: BASED_IN },
       knowsAbout: [
+        'Product engineering',
         'Product design',
         'Interface design',
-        'Frontend engineering',
+        'Rust',
         'React',
         'Next.js',
-        'Rust',
       ],
       sameAs: [LINKS.github, LINKS.linkedin],
     },
   ],
 };
 
-// Escape `<` so no string in the payload can close the <script> it is inlined into.
 export const STRUCTURED_DATA = JSON.stringify(graph).replace(/</g, '\\u003c');

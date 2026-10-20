@@ -2,9 +2,6 @@ import type { MetadataRoute } from 'next';
 
 import { SITE_URL } from '@/content/profile';
 
-// Bulk SEO-index crawlers: they send nothing back to the site, only load. Search engines and AI
-// crawlers stay allowed by the catch-all. robots.txt is a request, not a wall, so nobody is
-// actually locked out.
 const SCRAPERS = [
   'AhrefsBot',
   'SemrushBot',

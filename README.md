@@ -1,6 +1,7 @@
 # Kunal Singh
 
-**Product Engineer at [Calxmap](https://calxmap.com).** Shaping ideas into products. Designing and building them from the first sketch to the last commit.
+Shaping ideas into products. 
+Designing and building them from the first sketch to the last commit.
 
 Live at [madebykunal.com](https://madebykunal.com).
 
